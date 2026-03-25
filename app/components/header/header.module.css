@@ -1,4 +1,237 @@
-.header {
-  background: #2d2640;
-  padding: 20px;
+.container {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: calc(100% - 32px);
+  max-width: 1200px;
+}
+
+.wrapper {
+  background: #ffffff;
+  border-radius: 50px;
+  padding: 12px 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #1a1a1a;
+  flex-shrink: 0;
+}
+
+.logoIcon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.logoText {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.link {
+  text-decoration: none;
+  color: #4b5563;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+.link:hover {
+  color: #22c55e;
+}
+
+.ctaWrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ctaOutline {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a1a1a;
+  padding: 10px 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 50px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.ctaOutline:hover {
+  border-color: #22c55e;
+  color: #22c55e;
+}
+
+.ctaFilled {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+  background: #1a1a1a;
+  padding: 10px 20px;
+  border-radius: 50px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.ctaFilled:hover {
+  background: #22c55e;
+}
+
+.menuButton {
+  display: none;
+  background: none;
+  border: none;
+  color: #1a1a1a;
+  cursor: pointer;
+  padding: 8px;
+  margin: -8px;
+}
+
+.menuButton svg {
+  width: 24px;
+  height: 24px;
+}
+
+.mobileMenu {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 24px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px) scale(0.98);
+  transition: all 0.3s ease;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.mobileMenuOpen {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.mobileMenuHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mobileLink {
+  color: #1a1a1a;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 14px 0;
+  border-bottom: 1px solid #f3f4f6;
+  transition: color 0.2s ease;
+}
+
+.mobileLink:last-child {
+  border-bottom: none;
+}
+
+.mobileLink:hover {
+  color: #22c55e;
+}
+
+.mobileFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 24px;
+  margin-top: 16px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.mobileFooter .ctaOutline,
+.mobileFooter .ctaFilled {
+  text-align: center;
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .nav {
+    display: none;
+  }
+  
+  .ctaOutline,
+  .ctaFilled {
+    display: none;
+  }
+  
+  .menuButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .wrapper {
+    padding: 12px 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    top: 12px;
+    width: calc(100% - 24px);
+  }
+  
+  .wrapper {
+    border-radius: 40px;
+    padding: 10px 16px;
+  }
+  
+  .logoText {
+    font-size: 18px;
+  }
+  
+  .mobileMenu {
+    border-radius: 20px;
+    padding: 20px;
+  }
 }
