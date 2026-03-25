@@ -4,10 +4,9 @@ import { useState, useEffect, useRef } from 'react';
 import styles from './header.module.css';
 
 const navLinks = [
-  { label: 'Home', href: '#' },
-  { label: 'Feature', href: '#' },
-  { label: 'Support', href: '#' },
-  { label: 'Marketplace', href: '#' },
+  { label: 'Возможности', href: '#features' },
+  { label: 'Скачать', href: '#download' },
+  { label: 'О нас', href: '#about' },
 ];
 
 export default function Header() {
@@ -28,93 +27,53 @@ export default function Header() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [isMenuOpen]);
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth > 1024) {
-        setIsMenuOpen(false);
-      }
-    };
-    
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
   return (
     <header className={styles.container} ref={menuRef}>
-      <div className={styles.wrapper}>
-        <div className={styles.content}>
-          <a href="/" className={styles.logo}>
-            <div className={styles.logoIcon}>
-              <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="32" height="32" rx="8" fill="#22c55e"/>
-                <path d="M8 16L14 22L24 10" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </div>
-            <span className={styles.logoText}>Tarulata</span>
-          </a>
-          
-          <nav className={styles.nav}>
-            {navLinks.map((link) => (
-              <a key={link.label} href={link.href} className={styles.link}>
-                {link.label}
-              </a>
-            ))}
-          </nav>
-          
-          <div className={styles.ctaWrapper}>
-            <a href="#" className={styles.ctaOutline}>Get started</a>
-            <a href="#" className={styles.ctaFilled}>Get started</a>
-            
-            <button 
-              className={styles.menuButton} 
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? (
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <line x1="18" y1="6" x2="6" y2="18"/>
-                  <line x1="6" y1="6" x2="18" y2="18"/>
-                </svg>
-              ) : (
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <line x1="3" y1="12" x2="21" y2="12"/>
-                  <line x1="3" y1="6" x2="21" y2="6"/>
-                  <line x1="3" y1="18" x2="21" y2="18"/>
-                </svg>
-              )}
-            </button>
+      <nav className={styles.nav}>
+        <a href="/" className={styles.logo}>
+          <div className={styles.logoIcon}>
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 12 L28 22 L24 32 L20 22 L24 12 Z" fill="url(#gradW)"/>
+              <path d="M32 18 L36 28 L32 38 L28 28 L32 18 Z" fill="url(#gradW)" opacity="0.7"/>
+              <path d="M16 18 L20 28 L16 38 L12 28 L16 18 Z" fill="url(#gradW)" opacity="0.7"/>
+              <defs>
+                <linearGradient id="gradW" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#00d4ff"/>
+                  <stop offset="100%" stopColor="#a855f7"/>
+                </linearGradient>
+              </defs>
+            </svg>
           </div>
-        </div>
-
-        <div className={`${styles.mobileMenu} ${isMenuOpen ? styles.mobileMenuOpen : ''}`}>
-          <div className={styles.mobileMenuHeader}>
-            <a href="/" className={styles.logo} onClick={() => setIsMenuOpen(false)}>
-              <div className={styles.logoIcon}>
-                <svg viewBox="0 0 32 32" fill="none" width="32" height="32">
-                  <rect width="32" height="32" rx="8" fill="#22c55e"/>
-                  <path d="M8 16L14 22L24 10" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </div>
-              <span className={styles.logoText}>Tarulata</span>
+          <div className={styles.logoText}>
+            <span className={styles.bold}>Wisp</span>
+            <span className={styles.light}>App</span>
+          </div>
+        </a>
+        
+        <div className={styles.navLinks}>
+          {navLinks.map((link) => (
+            <a key={link.label} href={link.href} className={styles.link}>
+              {link.label}
             </a>
-            <button className={styles.menuButton} onClick={() => setIsMenuOpen(false)}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <line x1="18" y1="6" x2="6" y2="18"/>
-                <line x1="6" y1="6" x2="18" y2="18"/>
-              </svg>
-            </button>
-          </div>
-          <nav className={styles.mobileNav}>
-            {navLinks.map((link) => (
-              <a key={link.label} href={link.href} className={styles.mobileLink} onClick={() => setIsMenuOpen(false)}>
-                {link.label}
-              </a>
-            ))}
-          </nav>
-          <div className={styles.mobileFooter}>
-            <a href="#" className={styles.ctaOutline}>Get started</a>
-            <a href="#" className={styles.ctaFilled}>Get started</a>
-          </div>
+          ))}
+          <a href="#" className={styles.btnPrimary}>Войти</a>
         </div>
+        
+        <button 
+          className={styles.menuButton} 
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          {isMenuOpen ? '✕' : '☰'}
+        </button>
+      </nav>
+
+      <div className={`${styles.mobileMenu} ${isMenuOpen ? styles.mobileMenuOpen : ''}`}>
+        {navLinks.map((link) => (
+          <a key={link.label} href={link.href} className={styles.mobileLink} onClick={() => setIsMenuOpen(false)}>
+            {link.label}
+          </a>
+        ))}
+        <a href="#" className={styles.btnPrimary}>Войти</a>
       </div>
     </header>
   );
