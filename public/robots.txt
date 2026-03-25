@@ -1,0 +1,10 @@
+# WispApp Robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://wispapp.ru/sitemap.xml 
+
+
+Disallow: /admin/
+Disallow: /api/

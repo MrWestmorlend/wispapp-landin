@@ -1,0 +1,35 @@
+
+> wispapp-landing@0.1.0 build
+> next build
+
+▲ Next.js 16.2.1 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 18.0s
+  Running TypeScript ...
+  Finished TypeScript in 10.9s ...
+  Collecting page data using 1 worker ...
+  Generating static pages using 1 worker (0/4) ...
+Error fetching posts: Error: Dynamic server usage: Route / couldn't be rendered statically because it used no-store fetch https://api.wispapp.ru/posts?limit=6 /. See more info here: https://nextjs.org/docs/messages/dynamic-server-error
+    at v (.next/server/chunks/ssr/[root-of-the-server]__09z7o2x._.js:8:82459)
+    at <unknown> (.next/server/chunks/ssr/[root-of-the-server]__09z7o2x._.js:17:16230)
+    at async c (.next/server/chunks/ssr/_0fnqaz6._.js:1:1113)
+    at async ae (.next/server/chunks/ssr/_0fnqaz6._.js:1:34415) {
+  description: "Route / couldn't be rendered statically because it used no-store fetch https://api.wispapp.ru/posts?limit=6 /. See more info here: https://nextjs.org/docs/messages/dynamic-server-error",
+  digest: 'DYNAMIC_SERVER_USAGE'
+}
+  Generating static pages using 1 worker (1/4) 
+  Generating static pages using 1 worker (2/4) 
+  Generating static pages using 1 worker (3/4) 
+✓ Generating static pages using 1 worker (4/4) in 314ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ƒ /
+└ ○ /_not-found
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
